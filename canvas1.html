@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>Canvas 1</title>
+</head>
+<body>
+
+    <!-- this is an html comment (different than an html comment) -->
+
+    <!-- our canvas elemeent -->
+    <canvas id="canvas" width="1000" height="500"></canvas>
+
+<!-- scripts -->
+<script type="text/javascript">
+
+// "window.onload" sets up our function to be called when all aspects of the page are
+// finished loading. We don't want the script to try and interact with the page
+// if it hasn't even loaded yet.
+window.onload = function() {
+    
+    // Anything that begins with // or in between /**/ is a comment and will
+    // be ignored by the computer (it is for adding notes to your programs).
+    
+    // this is output to the console
+    console.log('hello world');
+    
+    // This gets a reference to the canvas html element above. 
+    // Notice the id attribute of the html element is what we use to get a reference to it.
+    var canvas = document.getElementById('canvas');
+    
+    // The canvas variable now equals this: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement.
+    // Look at the "Methods" to see what functions the canvas variable now has access to.
+    // Look at the method "getContext"
+    
+    // This returns a rendering context we can use to draw or it returns "null",
+    // which means there was some kind of error. In order to safely proceed,
+    // we need to check to make sure our variable doesn't equal null.
+    var ctx = canvas.getContext('2d');
+    
+    // Review and ask me about this.
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators
+    if (ctx != null) {        
+        requestAnimationFrame(loop); // start our rendering loop
+    }
+    
+    // Starting x position.
+    // Why is this outside of the loop() function?
+    var x_position = 10;
+    
+    function loop() {
+    
+        // clear the canvas at the beginning of each frame
+        ctx.clearRect(0, 0, 1000, 500);
+    
+        // Increment x_position.
+        // Notice we aren't using the "var" key word. Why?
+        // What happens if you change this to 2? Or some other number?
+        x_position = x_position + 1; // does that make sense?
+    
+        // Arguments of fillRect are (x_position, y_position, width, height).
+        // Why are some numbers and some text?
+        ctx.fillRect(x_position, 10, 10, 10);
+        
+        requestAnimationFrame(loop); // keep rendering loop going
+    }
+}
+</script>
+
+</body>
+</html>
